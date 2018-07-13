@@ -6,6 +6,12 @@ from tkinter.filedialog import askopenfilename
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
+
+        self.font_size = 14
+        self.font = "Roboto"
+        button_style = ttk.Style()
+        button_style.configure("button.TButton", font=(self.font, self.font_size))
+
         self.create_widgets()
 
         self.label_file_path = None
@@ -18,12 +24,15 @@ class Application(tk.Frame):
         self.title.place(x=720/2, y=25, anchor="center")
 
         # Row 1
-        self.label = ttk.Label(text="Veldu verðmiðaútlit: ", style="BW.TLabel")
+        self.label = ttk.Label(text="Veldu verðmiðaútlit: ", style="BW.TLabel", font=(self.font, self.font_size))
         self.label.place(x=25, y=50)
 
-        self.drop = ttk.Combobox(state="readonly", values=verdmidautlit)
+        self.drop = ttk.Combobox(state="readonly", values=verdmidautlit, font=(self.font, self.font_size))
         self.drop.set("Verdmidar")
-        self.drop.place(x=150, y=50)
+        self.drop.place(x=210, y=50)
+
+        self.print_button = ttk.Button(text="Prenta", style="button.TButton")
+        self.print_button.place(x=465, y=48)
 
     def say_hi(self, box):
         print(box.get())
