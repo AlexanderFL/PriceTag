@@ -3,30 +3,35 @@
 import win32com.client as win32
 from time import sleep
 
-main_file = "C:\\Users\\ht-afgr7\\Desktop\\PriceTag-master\\PriceTag-master\\test1.xlsm"
+main_file = "C:\\Users\\alexf\\Desktop\\Verdmerkingar-290118.xlsm"
 label_file = "vorunr.txt"
 label_type = "A6L"
+
 
 def reset_label_column(sheet, stop=14):
     for x in range(2, stop):
         sheet.Cells(x, 1).Value = None
 
+
 label_number = 0
+
+
 def get_label_number():
     if label_type is "VerdmidarLitlir":
-        label_number = 12
-    else if label_type is "Verdmidar":
-        label_number = 12
-    else if label_type is "A7":
-        label_number = 8
-    else if label_type is "A6":
-        label_number = 4
-    else if label_type is "A6L":
-        label_number = 2
-    else if label_type is "A6B":
-        label_number = 4
-    else if label_type is "A5":
-        label_number = 2
+        return 12
+    elif label_type is "Verdmidar":
+        return 12
+    elif label_type is "A7":
+        return 8
+    elif label_type is "A6":
+        return 4
+    elif label_type is "A6L":
+        return 2
+    elif label_type is "A6B":
+        return 4
+    elif label_type is "A5":
+        return 2
+
 
 # Opening excel and setting the active worksheet
 excel = win32.gencache.EnsureDispatch('Excel.Application')
@@ -40,7 +45,7 @@ xlSheet = xlBook.Worksheets('Front')
 # Open label file
 codes = []
 with open(label_file) as f:
-    codes = f.read().splitlines() 
+    codes = f.read().splitlines()
 
 # Placing all of the labels and printing
 label_type = 12
