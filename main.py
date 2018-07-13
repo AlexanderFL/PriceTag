@@ -5,7 +5,7 @@ from time import sleep
 
 main_file = "C:\\Users\\alexf\\Desktop\\Verdmerkingar-290118.xlsm"
 label_file = "vorunr.txt"
-label_type = "A6L"
+label_type = "Verdmidar"
 
 
 def reset_label_column(sheet, stop=14):
@@ -33,6 +33,8 @@ def get_label_number():
         return 2
 
 
+label_number = get_label_number()
+
 # Opening excel and setting the active worksheet
 excel = win32.gencache.EnsureDispatch('Excel.Application')
 excel.Interactive = True
@@ -52,13 +54,13 @@ label_type = 12
 label_count = 0
 label_sub_count = 0
 while label_count != len(codes):
-    if label_sub_count % 2 == 0 and label_count is not 0:
+    if label_sub_count % label_number == 0 and label_count is not 0:
         label_sub_count = 0
         xlSheet = xlBook.Worksheets(label_type)
         # xlSheet.PrintOut(Copies=1, Collate=True)
         sleep(1)
         xlSheet = xlBook.Worksheets('Front')
-        reset_label_column(xlSheet, 2+2)
+        reset_label_column(xlSheet, label_number+2)
     xlSheet.Cells(label_sub_count+2,1).Value = codes[label_count]
 
     label_sub_count += 1
