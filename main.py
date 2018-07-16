@@ -3,7 +3,7 @@
 import win32com.client as win32
 from time import sleep
 
-main_file = "C:\\Users\\alexf\\Desktop\\Verdmerkingar-290118.xlsm"
+main_file = "C:\\Users\\ht-afgr7\\Desktop\\PriceTag-master\\PriceTag-master\\test1.xlsm"
 label_file = "vorunr.txt"
 label_type = "Verdmidar"
 
@@ -68,3 +68,7 @@ while label_count != len(codes):
 xlSheet = xlBook.Worksheets(label_type)
 # xlSheet.PrintOut(Copies=1, Collate=True)
 xlSheet = xlBook.Worksheets('Front')
+
+# xlBook.Application.Run('test1.xlsm!RefreshQuery')
+xlBook.Close(True)
+excel.Quit()
