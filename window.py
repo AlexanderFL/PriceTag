@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
+from cleanup import LabelApp
 
 
 class Application(tk.Frame):
@@ -51,6 +52,9 @@ class Application(tk.Frame):
         self.settings_title.place(x=720/2, y=170, anchor="center")
 
         # Row 5 - Settings
+        self.fake_print_settings = ttk.Checkbutton(text="Fake print")
+        self.fake_print_settings.place(x=50, y=200)
+        
 
     def ask_for_file(self):
         self.label_file_path = askopenfilename()
@@ -62,7 +66,14 @@ class Application(tk.Frame):
         self.file_selected_box.config(state="readonly")
 
     def print_labels(self):
-        pass
+        print(self.fake_print_settings.state()[0])
+        main_file = "C:\\Users\\ht-afgr7\\Desktop\\PriceTag-master\\PriceTag-master\\test1.xlsm"
+        label_file = self.label_file_path
+        label_type = self.drop.get()
+        #self.la = LabelApp(main_file, label_file, label_type)
+        #self.la.is_fake_print = True
+        #self.la.start_working()
+        #self.la.close_application(False)
 
 
 root = tk.Tk()
