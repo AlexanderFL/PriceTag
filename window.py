@@ -67,7 +67,7 @@ class Application(tk.Frame):
 
     def print_labels(self):
         print(self.fake_print_settings.state()[0])
-        main_file = "C:\\Users\\ht-afgr7\\Desktop\\PriceTag-master\\PriceTag-master\\test1.xlsm"
+        main_file = "--"
         label_file = self.label_file_path
         label_type = self.drop.get()
         #self.la = LabelApp(main_file, label_file, label_type)
